@@ -37,7 +37,7 @@ describe "When a cell" do
       expect(cell.next_status).to eq(:dead)
     end
 
-    it "whit two or three live neighbours will be alive" do
+    it "with two or three live neighbours will be alive" do
       cell = Cell.new(:alive)
 
       cell.set_live_neighbours(3)
@@ -55,5 +55,15 @@ describe "When a cell" do
       expect(cell.next_status).to eq(:dead)
     end
 
+  end
+
+  context "is dead" do
+    it "with exactly three live neighbours becomes a live cell" do
+      cell = Cell.new(:dead)
+
+      cell.set_live_neighbours(3)
+
+      expect(cell.next_status).to eq(:alive)
+    end
   end
 end
